@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Mèmes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Générateur de Mèmes</h1>
+        <p>Créez, téléchargez et partagez vos mèmes en quelques clics.</p>
+    </header>
+    <main class="app-main">
+        <section class="controls" aria-label="Contrôles du générateur">
+            <div class="input-group">
+                <label for="imageInput">Télécharger une image</label>
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="topText">Texte haut</label>
+                    <input type="text" id="topText" placeholder="Texte supérieur">
+                </div>
+                <div class="input-group">
+                    <label for="bottomText">Texte bas</label>
+                    <input type="text" id="bottomText" placeholder="Texte inférieur">
+                </div>
+                <div class="input-group">
+                    <label for="fontSize">Taille du texte</label>
+                    <input type="range" id="fontSize" min="12" max="72" value="36">
+                </div>
+                <div class="input-group">
+                    <label for="textColor">Couleur du texte</label>
+                    <input type="color" id="textColor" value="#ffffff">
+                </div>
+                <div class="input-group">
+                    <label for="outlineColor">Contour</label>
+                    <input type="color" id="outlineColor" value="#000000">
+                </div>
+            </div>
+            <div class="actions">
+                <button id="downloadBtn" disabled>Télécharger</button>
+                <button id="shareBtn" disabled>Partager</button>
+                <button id="saveBtn" disabled>Ajouter à la galerie</button>
+                <button id="resetBtn">Réinitialiser</button>
+            </div>
+            <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+        </section>
+        <section class="preview" aria-label="Aperçu du mème">
+            <canvas id="memeCanvas" width="600" height="600" role="img" aria-label="Aperçu du mème"></canvas>
+            <p class="helper-text">Téléchargez une image pour commencer.</p>
+        </section>
+    </main>
+    <section class="gallery" aria-label="Galerie de mèmes">
+        <div class="gallery-header">
+            <h2>Galerie</h2>
+            <button id="clearGalleryBtn">Vider la galerie</button>
+        </div>
+        <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+    </section>
+
+    <template id="galleryItemTemplate">
+        <figure class="gallery-item">
+            <img alt="Mème sauvegardé">
+            <figcaption>
+                <button class="use-meme">Réutiliser</button>
+                <button class="download-meme">Télécharger</button>
+            </figcaption>
+        </figure>
+    </template>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
